@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="631f6f54-c7a4-4c19-a243-691fdb937585" name="更改" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="11" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="302lDItOvEtQxLIz8nr0Ajmmi35" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.SpringSecurityApplicationTests.contextLoads.executor": "Run",
+    "JUnit.SpringSecurityApplicationTests.executor": "Run",
+    "JUnit.SpringSecurityApplicationTests.testContextLoads.executor": "Run",
+    "JUnit.SpringSecurityApplicationTests.testPassEncoder.executor": "Run",
+    "JUnit.SpringSecurityApplicationTests.testSelectPermsByUserId.executor": "Run",
+    "JUnit.SpringSecurityApplicationTests.testUserMapperInjection.executor": "Run",
+    "Maven.SpringSecurity [compile].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.SpringSecurityApplication.executor": "Run",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/java/SpringSecurity/src/main/resources/mapper",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.Ed25519Example.executor": "Run"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\java\SpringSecurity\src\main\resources\mapper" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.springsecurity.utils" />
+      <recent name="org.example.springsecurity.domain" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SpringSecurityApplication">
+    <configuration name="Ed25519Example" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.springsecurity.另一个网页的身份生成代码.Ed25519Example" />
+      <module name="SpringSecurity" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.springsecurity.另一个网页的身份生成代码.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringSecurityApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpringSecurity" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.springsecurity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.springsecurity" />
+      <option name="MAIN_CLASS_NAME" value="org.example.springsecurity.SpringSecurityApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringSecurityApplicationTests.testContextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpringSecurity" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.springsecurity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.springsecurity" />
+      <option name="MAIN_CLASS_NAME" value="org.example.springsecurity.SpringSecurityApplicationTests" />
+      <option name="METHOD_NAME" value="testContextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringSecurityApplicationTests.testPassEncoder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpringSecurity" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.springsecurity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.springsecurity" />
+      <option name="MAIN_CLASS_NAME" value="org.example.springsecurity.SpringSecurityApplicationTests" />
+      <option name="METHOD_NAME" value="testPassEncoder" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringSecurityApplicationTests.testSelectPermsByUserId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpringSecurity" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.springsecurity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.springsecurity" />
+      <option name="MAIN_CLASS_NAME" value="org.example.springsecurity.SpringSecurityApplicationTests" />
+      <option name="METHOD_NAME" value="testSelectPermsByUserId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringSecurityApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="SpringSecurity" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.springsecurity.SpringSecurityApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.Ed25519Example" />
+        <item itemvalue="JUnit.SpringSecurityApplicationTests.testSelectPermsByUserId" />
+        <item itemvalue="JUnit.SpringSecurityApplicationTests.testPassEncoder" />
+        <item itemvalue="JUnit.SpringSecurityApplicationTests" />
+        <item itemvalue="JUnit.SpringSecurityApplicationTests.testContextLoads" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="631f6f54-c7a4-4c19-a243-691fdb937585" name="更改" comment="" />
+      <created>1752833429922</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1752833429922</updated>
+      <workItem from="1752833431150" duration="2131000" />
+      <workItem from="1752974413220" duration="9000" />
+      <workItem from="1752985040929" duration="598000" />
+      <workItem from="1753023654054" duration="3000" />
+      <workItem from="1753058543195" duration="151000" />
+      <workItem from="1753058887256" duration="3313000" />
+      <workItem from="1753062230065" duration="1969000" />
+      <workItem from="1753064379842" duration="5871000" />
+      <workItem from="1753140294657" duration="11738000" />
+      <workItem from="1753166627369" duration="4775000" />
+      <workItem from="1753193235001" duration="4459000" />
+      <workItem from="1753197915729" duration="98000" />
+      <workItem from="1753228602398" duration="16136000" />
+      <workItem from="1753257009956" duration="4768000" />
+      <workItem from="1753281960002" duration="4396000" />
+      <workItem from="1753286433378" duration="1554000" />
+      <workItem from="1753338372878" duration="4342000" />
+      <workItem from="1754298739461" duration="692000" />
+      <workItem from="1754830877552" duration="5319000" />
+      <workItem from="1754872117893" duration="2268000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/springsecurity/domain/LoginUser.java</url>
+          <line>38</line>
+          <properties class="org.example.springsecurity.domain.LoginUser" method="getAuthorities">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
