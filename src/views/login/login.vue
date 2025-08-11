@@ -2,9 +2,9 @@
   <div class="login-container">
     <div class="text-center mb-8">
       <div class="logo-badge">
-        <img class="fas fa-shield-alt" src="../assets/ga.png" alt="logo" style="display: flex; width: 100%; height: 100%;"/>
+        <img class="fas fa-shield-alt" src="@/assets/ga.png" alt="logo" style="display: flex; width: 100%; height: 100%;"/>
       </div>
-      <h1 class="system-title">公安局警务系统</h1>
+      <h1 class="system-title">公司管理系统</h1>
       <p class="system-subtitle">请使用您的账号登录系统</p>
     </div>
 
@@ -86,15 +86,16 @@
     <div class="alternative-login-container">
       <button
         class="alternative-btn"
-        @click="handleAuth('id')"
+        @click="idLogin"
         @mouseenter="hoverButton('id')"
         @mouseleave="hoverButton(null)"
       >
-        <i class="fas fa-id-card-alt btn-icon"></i> 身份校验
+        <i class="fas fa-id-card-alt btn-icon"></i> 
+        身份校验
       </button>
       <button
         class="alternative-btn"
-        @click="handleAuth('github')"
+        @click="githubLogin"
         @mouseenter="hoverButton('github')"
         @mouseleave="hoverButton(null)"
       >
@@ -108,75 +109,84 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'LoginPage',
-  data() {
-    return {
-      form: {
-        username: '',
-        password: '',
-        remember: false
-      },
-      errors: {
-        username: '',
-        password: ''
-      },
-      loading: false,
-      activeButton: null,
-      currentYear: new Date().getFullYear()
-    }
-  },
-  methods: {
-    validateForm() {
-      let valid = true
-      this.errors = { username: '', password: '' }
-      
-      if (!this.form.username.trim()) {
-        this.errors.username = '请输入用户名'
-        valid = false
-      }
-      
-      if (!this.form.password) {
-        this.errors.password = '请输入密码'
-        valid = false
-      } else if (this.form.password.length < 6) {
-        this.errors.password = '密码长度至少6位'
-        valid = false
-      }
-      
-      return valid
-    },
-    
-    clearError(field) {
-      this.errors[field] = ''
-    },
-    
-    hoverButton(type) {
-      this.activeButton = type
-    },
-    
-    handleLogin() {
-      if (!this.validateForm()) return
-      
-      this.loading = true
-      
-      // 模拟登录请求
-      setTimeout(() => {
-        this.loading = false
-        this.$emit('login-success', this.form.username)
-        
-        // 实际项目中这里应该是路由跳转
-        console.log(`欢迎 ${this.form.username}，登录成功！`)
-      }, 1500)
-    },
-    
-    handleAuth(type) {
-      console.log(`使用 ${type} 方式登录`)
-      // 这里可以添加第三方认证逻辑
-    }
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+// 表单数据
+const form = ref({
+  username: '',
+  password: '',
+  remember: false
+});
+
+// 错误信息
+const errors = ref({
+  username: '',
+  password: ''
+});
+
+// 状态管理
+const loading = ref(false);
+const activeButton = ref(null);
+const currentYear = ref(new Date().getFullYear());
+
+// 表单验证
+const validateForm = () => {
+  let valid = true;
+  errors.value = { username: '', password: '' };
+  
+  if (!form.value.username.trim()) {
+    errors.value.username = '请输入用户名';
+    valid = false;
   }
-}
+  
+  if (!form.value.password) {
+    errors.value.password = '请输入密码';
+    valid = false;
+  } else if (form.value.password.length < 6) {
+    errors.value.password = '密码长度至少6位';
+    valid = false;
+  }
+  
+  return valid;
+};
+
+// 清除错误信息
+const clearError = (field: any) => {
+  errors.value.password = '';
+  errors.value.username = '';
+};
+
+// 按钮 hover 效果
+const hoverButton = (type:any) => {
+  activeButton.value = type;
+};
+
+// 处理登录
+const handleLogin = () => {
+  if (!validateForm()) return;
+  
+  loading.value = true;
+  
+  // 模拟登录请求
+  setTimeout(() => {
+    loading.value = false;
+    console.log(`欢迎 ${form.value.username}，登录成功！`);
+    router.push('/home');
+  }, 1500);
+};
+
+const idLogin = () => {
+  console.log('身份校验登录');
+  router.push('/idLogin');
+};
+const githubLogin = () => {
+  console.log('GitHub 登录');
+  router.push('/githubLogin');
+};
+
 </script>
 
 <style>
