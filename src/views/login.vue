@@ -248,10 +248,6 @@ body {
 
 .logo-badge i {
   font-size: 36px;
-  color: #ffffff;
-}
-
-.system-title {
   font-size: 28px;
   font-weight: 700;
   color: #ffffff;
