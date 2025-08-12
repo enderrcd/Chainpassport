@@ -15,14 +15,15 @@
           <div class="input-icon">
             <i class="fas fa-user"></i>
           </div>
-          <input
+          <el-input
             v-model="form.username"
             type="text"
             id="username"
             class="input-field"
             placeholder="请输入用户名"
             @focus="clearError('username')"
-          >
+            clearable
+          />
         </div>
         <div v-if="errors.username" class="error-message">
           {{ errors.username }}
@@ -35,14 +36,16 @@
           <div class="input-icon">
             <i class="fas fa-lock"></i>
           </div>
-          <input
+          <el-input
             v-model="form.password"
             type="password"
             id="password"
             class="input-field"
             placeholder="请输入密码"
             @focus="clearError('password')"
-          >
+            clearable
+            show-password
+          />
         </div>
         <div v-if="errors.password" class="error-message">
           {{ errors.password }}
@@ -69,6 +72,7 @@
         type="submit"
         class="auth-btn"
         :disabled="loading"
+        @click="handleLogin"
       >
         <span v-if="loading">
           <i class="fas fa-spinner fa-spin spinner-icon"></i>登录中...
@@ -112,7 +116,17 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import request from '@/utils/request';
+import { reqLogin } from '@/api/interface';
+import { ElMessage } from 'element-plus';
+import { useUserStore } from '@/stores/moudules/user';
+
 const router = useRouter();
+const userStore = useUserStore();
+
+if (userStore.isTokenValid()) {
+  router.push('/home');
+}
 
 // 表单数据
 const form = ref({
@@ -165,26 +179,36 @@ const hoverButton = (type:any) => {
 };
 
 // 处理登录
-const handleLogin = () => {
+const handleLogin = async() => {
   if (!validateForm()) return;
-  
+
   loading.value = true;
   
-  // 模拟登录请求
-  setTimeout(() => {
-    loading.value = false;
-    console.log(`欢迎 ${form.value.username}，登录成功！`);
+  try {
+    const reqLoginForm = ({
+      username: form.value.username,
+      password: form.value.password,
+    })
+    const response = await reqLogin(reqLoginForm);
+    userStore.setUserInfo(response.data, form.value.username);
     router.push('/home');
-  }, 1500);
+    ElMessage.success('登录成功');
+  }catch (error) {
+    console.error('登录失败:', error);
+    loading.value = false;
+    ElMessage.error('登录失败，请检查用户名和密码');
+    return;
+  }finally {
+    loading.value = false;
+  }
 };
 
 const idLogin = () => {
   console.log('身份校验登录');
   router.push('/idLogin');
 };
-const githubLogin = () => {
+const githubLogin = async() => {
   console.log('GitHub 登录');
-  router.push('/githubLogin');
 };
 
 </script>

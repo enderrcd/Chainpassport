@@ -4,4 +4,9 @@
 
 git操作：        
 git init         
-git add remote origin 。。。       
+git add remote origin ...      
+git pull       
+
+axios: npm install axios         
+
+pinia持久化工具：npm i pinia-plugin-persistedstate    
