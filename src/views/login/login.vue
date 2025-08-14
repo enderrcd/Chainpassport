@@ -99,11 +99,11 @@
       </button>
       <button
         class="alternative-btn"
-        @click="githubLogin"
+        @click="giteeLogin(false)"
         @mouseenter="hoverButton('github')"
         @mouseleave="hoverButton(null)"
       >
-        <i class="fab fa-github btn-icon"></i> Git账号
+        <i class="fab fa-github btn-icon"></i> Gitee账号
       </button>
     </div>
 
@@ -116,17 +116,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import request from '@/utils/request';
-import { reqLogin } from '@/api/interface';
+import { reqLogin, reqGitee } from '@/api/interface';
 import { ElMessage } from 'element-plus';
 import { useUserStore } from '@/stores/moudules/user';
 
 const router = useRouter();
 const userStore = useUserStore();
 
-if (userStore.isTokenValid()) {
-  router.push('/home');
-}
 
 // 表单数据
 const form = ref({
@@ -178,6 +174,44 @@ const hoverButton = (type:any) => {
   activeButton.value = type;
 };
 
+// Gitee 登录
+const giteeLogin = async(isAutoLogin: boolean = false) => {
+  console.log('Gitee 登录');
+  ElMessage.info('正在获取Gitee授权码...');
+  const shouldProceed = isAutoLogin 
+    ? !userStore.isTokenValid() 
+    : !userStore.isGiteeIdValid() && !userStore.isTokenValid();
+
+    if(shouldProceed) {
+      const response = await reqGitee();
+      if(response.data.code === 200){
+        const { client_id, redirect_uri, scope, response_type } = response.data.data;
+        const params = new URLSearchParams();
+        params.append('client_id', client_id);
+        params.append('redirect_uri', redirect_uri);
+        params.append('response_type', response_type);
+        if (scope) {
+          params.append('scope', scope);
+        }
+        const url = 'http://localhost:8080/oauth2/register/gitee' + '?' + params.toString();
+        window.location.href = url;
+    }else {
+      ElMessage.error('获取 Gitee 配置失败');
+    }
+    }
+};
+
+
+//自动登录部分
+if(userStore.isTokenValid()) {
+  router.push('/main');
+}else {
+  if(userStore.isGiteeIdValid()) {
+    giteeLogin(true);
+  }else {
+    router.push('/');
+  }
+}
 // 处理登录
 const handleLogin = async() => {
   if (!validateForm()) return;
@@ -185,13 +219,14 @@ const handleLogin = async() => {
   loading.value = true;
   
   try {
-    const reqLoginForm = ({
-      username: form.value.username,
+    const reqLoginForm = {
+      userName: form.value.username,
       password: form.value.password,
-    })
+    }
     const response = await reqLogin(reqLoginForm);
-    userStore.setUserInfo(response.data, form.value.username);
-    router.push('/home');
+    userStore.setToken(response.data.data);
+    userStore.setUserInfo(form.value.username);
+    router.push('/main');
     ElMessage.success('登录成功');
   }catch (error) {
     console.error('登录失败:', error);
@@ -207,9 +242,8 @@ const idLogin = () => {
   console.log('身份校验登录');
   router.push('/idLogin');
 };
-const githubLogin = async() => {
-  console.log('GitHub 登录');
-};
+
+
 
 </script>
 
