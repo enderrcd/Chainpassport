@@ -18,3 +18,15 @@ export interface giteeResponse {
         scope: string;
     }
 }
+
+export interface IdLoginResponse {
+    code: number;
+    msg: string;
+    data: object;
+}
+
+export interface IdentificationResponse {
+    code: number;
+    msg: string;
+    data: string;
+}

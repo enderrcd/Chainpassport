@@ -7,7 +7,6 @@ interface UserState {
     giteeId: string;
     tokenExpiresAt: number;
     giteeIdExpiresAt: number;
-
 }
 
 export const useUserStore = defineStore('user', {
@@ -17,7 +16,6 @@ export const useUserStore = defineStore('user', {
         giteeId: '',
         tokenExpiresAt: 0,
         giteeIdExpiresAt: 0,
-
     }),
     actions: {
         setToken(token: string) {

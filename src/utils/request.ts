@@ -18,7 +18,7 @@ request.interceptors.request.use((config) => {
     // 仅在token有效且当前页面需要认证时添加
     const noAuthUrls = ['/login', '/public/login/gitee/config', '/public/register']; // 无需认证的接口
     if (!noAuthUrls.some(url => requestUrl.includes(url)) && userStore.isTokenValid()) {
-    config.headers['authentication'] = token.value;
+        config.headers['authentication'] = token.value;
     }
     // 2. Gitee登录接口添加giteeId
     if (requestUrl.includes('/public/login/gitee/config')) {

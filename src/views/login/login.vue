@@ -116,7 +116,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { reqLogin, reqGitee } from '@/api/interface';
+import { reqLogin, reqGitee, reqIdLogin } from '@/api/interface';
 import { ElMessage } from 'element-plus';
 import { useUserStore } from '@/stores/moudules/user';
 
@@ -238,9 +238,14 @@ const handleLogin = async() => {
   }
 };
 
-const idLogin = () => {
+const idLogin = async() => {
   console.log('身份校验登录');
-  router.push('/idLogin');
+  const response = await reqIdLogin();
+  if(response.data.code === 200) {
+    router.push('/idLogin');
+  } else {
+    ElMessage.error('身份校验登录失败，请稍后再试');
+  }
 };
 
 

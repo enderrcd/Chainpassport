@@ -28,7 +28,7 @@ const router = createRouter({
 })
 
 
-router.beforeEach((to) => {
+/* router.beforeEach((to) => {
   const userStore = useUserStore();
   // 已登录（token有效）则禁止访问登录页
   if (to.path === '/' && userStore.isTokenValid()) {
@@ -38,6 +38,6 @@ router.beforeEach((to) => {
   if (to.path === '/main' && !userStore.isTokenValid()) {
     return '/';
   }
-});
+}); */
 
 export default router

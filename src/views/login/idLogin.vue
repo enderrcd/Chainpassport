@@ -54,6 +54,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/moudules/user';
+import { reqIdentity } from '@/api/interface';
+
+const userStore = useUserStore();
 
 const router = useRouter();
 const countdown = ref(5);
@@ -72,13 +76,17 @@ const loading = ref(true);
 // 模拟跳转过程
 onMounted(() => {
   // 倒计时
-  const timer = setInterval(() => {
+  const timer = setInterval(async() => {
     countdown.value--;
     message.value = loadingMessages[countdown.value];
     
-    if (countdown.value === 0) {
-      clearInterval(timer);
-      router.push('/main');
+    const response = await reqIdentity();
+    if(response.data.code ===200) {
+      userStore.token = response.data.data;
+      if (countdown.value === 0) {
+        clearInterval(timer);
+        router.push('/main');
+      }
     }
   }, 800);
   
