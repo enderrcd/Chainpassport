@@ -28,16 +28,12 @@ const router = createRouter({
 })
 
 
-/* router.beforeEach((to) => {
+router.beforeEach((to) => {
   const userStore = useUserStore();
   // 已登录（token有效）则禁止访问登录页
   if (to.path === '/' && userStore.isTokenValid()) {
     return '/main';
   }
-  // 未登录则禁止访问主页面
-  if (to.path === '/main' && !userStore.isTokenValid()) {
-    return '/';
-  }
-}); */
+});
 
 export default router

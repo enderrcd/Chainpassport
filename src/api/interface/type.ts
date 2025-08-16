@@ -30,3 +30,9 @@ export interface IdentificationResponse {
     msg: string;
     data: string;
 }
+
+export interface LogoutResponse {
+    code: number;
+    msg: string;
+    data: string;
+}
