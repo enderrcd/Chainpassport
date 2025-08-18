@@ -215,6 +215,7 @@ if(userStore.isTokenValid()) {
 // 处理登录
 const handleLogin = async() => {
   if (!validateForm()) return;
+  console.log('登录request发送');
 
   loading.value = true;
   

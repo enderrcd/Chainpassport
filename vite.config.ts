@@ -12,7 +12,7 @@ export default defineConfig({
   ],
   base: '/oauth2/register/gitee/',
   server: {
-    port: 8080,
+    port: 8081,
   },
   resolve: {
     alias: {
