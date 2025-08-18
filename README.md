@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Web1 登录后端架构
 
 基于Spring Boot + MySQL + Redis的登录认证系统，支持传统用户名密码登录、Gitee OAuth2登录和零知识证明(ZKP)认证。
@@ -142,3 +143,6 @@ gitee:
 - Redis存储敏感信息设置过期时间
 - CORS跨域支持
 - CSRF防护禁用（适用于API服务）
+=======
+#Chainpass
+>>>>>>> a41a7874a3be626c2dd13b6071360a56beb02979
