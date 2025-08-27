@@ -8,6 +8,8 @@ import com.web1.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class LoginController {
     
@@ -34,9 +36,9 @@ public class LoginController {
      * 用户登出接口
      */
     @PostMapping("/logout/user")
-    public ApiResponse<Object> logout(@RequestHeader("Authorization") String authHeader) {
+    public ApiResponse<Object> logout(@RequestHeader("authentication") String authHeader) {
         try {
-            // 从Authorization头中提取token
+            // 从authentication头中提取token
             String token = authHeader.replace("Bearer ", "");
             
             // 从token中获取用户ID
@@ -47,20 +49,21 @@ public class LoginController {
                 userService.logout(userId);
             }
             
-            return ApiResponse.success("登出成功");
+            return ApiResponse.success(null);
         } catch (Exception e) {
             return ApiResponse.error("登出失败：" + e.getMessage());
         }
     }
     
     /**
-     * 用户注册接口
+     * 用户注册接口 - ZKP身份认证
      */
     @PostMapping("/public/register")
-    public ApiResponse<User> register(@RequestBody User user) {
+    public ApiResponse<Object> register(@RequestBody LoginRequest registerRequest, HttpSession session) {
         try {
-            User registeredUser = userService.register(user);
-            return ApiResponse.success(registeredUser);
+            // 调用用户服务进行ZKP注册流程
+            Object sessionData = userService.zkpRegister(registerRequest, session);
+            return ApiResponse.success(sessionData);
         } catch (Exception e) {
             return ApiResponse.error("注册失败：" + e.getMessage());
         }

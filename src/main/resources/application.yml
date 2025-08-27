@@ -3,8 +3,8 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/web1_db?useSSL=false&serverTimezone=UTC&characterEncoding=utf8
-    username: ender
+    url: jdbc:mysql://localhost:3306/web1?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
+    username: enderrcd
     password: 20050614RCD
     driver-class-name: com.mysql.cj.jdbc.Driver
   

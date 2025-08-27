@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API测试页面</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        button { padding: 10px 15px; margin: 5px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        textarea { width: 100%; height: 100px; margin: 10px 0; }
+        .result { background: #f8f9fa; padding: 10px; margin: 10px 0; border-left: 4px solid #007bff; }
+    </style>
+</head>
+<body>
+    <h1>Web1 API测试页面</h1>
+    
+    <div class="test-section">
+        <h3>1. 登录接口测试</h3>
+        <button onclick="testLogin()">测试登录</button>
+        <div id="loginResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>2. 注册接口测试</h3>
+        <button onclick="testRegister()">测试注册</button>
+        <div id="registerResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>3. Gitee OAuth2配置接口测试</h3>
+        <button onclick="testGiteeConfig()">测试Gitee配置</button>
+        <div id="giteeResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>4. ZKP认证按钮接口测试</h3>
+        <button onclick="testZKPButton()">测试ZKP认证</button>
+        <div id="zkpResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>5. 登出接口测试</h3>
+        <input type="text" id="jwtToken" placeholder="输入JWT Token" style="width: 300px;">
+        <button onclick="testLogout()">测试登出</button>
+        <div id="logoutResult" class="result"></div>
+    </div>
+
+    <script>
+        async function testLogin() {
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: 'testuser',
+                        password: 'testpass'
+                    })
+                });
+                const result = await response.json();
+                document.getElementById('loginResult').innerHTML = 
+                    `<strong>状态:</strong> ${response.status}<br>
+                     <strong>响应:</strong> ${JSON.stringify(result, null, 2)}`;
+            } catch (error) {
+                document.getElementById('loginResult').innerHTML = 
+                    `<strong>错误:</strong> ${error.message}`;
+            }
+        }
+
+        async function testRegister() {
+            try {
+                const response = await fetch('/public/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: 'newuser',
+                        password: 'newpass'
+                    })
+                });
+                const result = await response.json();
+                document.getElementById('registerResult').innerHTML = 
+                    `<strong>状态:</strong> ${response.status}<br>
+                     <strong>响应:</strong> ${JSON.stringify(result, null, 2)}`;
+            } catch (error) {
+                document.getElementById('registerResult').innerHTML = 
+                    `<strong>错误:</strong> ${error.message}`;
+            }
+        }
+
+        async function testGiteeConfig() {
+            try {
+                const response = await fetch('/public/login/gitee/config', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'giteeId': 'test_gitee_id'
+                    }
+                });
+                const result = await response.json();
+                document.getElementById('giteeResult').innerHTML = 
+                    `<strong>状态:</strong> ${response.status}<br>
+                     <strong>响应:</strong> ${JSON.stringify(result, null, 2)}`;
+            } catch (error) {
+                document.getElementById('giteeResult').innerHTML = 
+                    `<strong>错误:</strong> ${error.message}`;
+            }
+        }
+
+        async function testZKPButton() {
+            try {
+                const response = await fetch('/public/login/button', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        zkpData: 'test_zkp_data'
+                    })
+                });
+                const result = await response.json();
+                document.getElementById('zkpResult').innerHTML = 
+                    `<strong>状态:</strong> ${response.status}<br>
+                     <strong>响应:</strong> ${JSON.stringify(result, null, 2)}`;
+            } catch (error) {
+                document.getElementById('zkpResult').innerHTML = 
+                    `<strong>错误:</strong> ${error.message}`;
+            }
+        }
+
+        async function testLogout() {
+            const token = document.getElementById('jwtToken').value;
+            if (!token) {
+                alert('请输入JWT Token');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/logout/user', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authentication': `Bearer ${token}`
+                    }
+                });
+                const result = await response.json();
+                document.getElementById('logoutResult').innerHTML = 
+                    `<strong>状态:</strong> ${response.status}<br>
+                     <strong>响应:</strong> ${JSON.stringify(result, null, 2)}`;
+            } catch (error) {
+                document.getElementById('logoutResult').innerHTML = 
+                    `<strong>错误:</strong> ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
